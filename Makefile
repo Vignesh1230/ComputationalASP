@@ -1,6 +1,6 @@
 FC=gfortran
 FFLAGS= -Wall -fcheck=all # turn on warnings and checks
-SRC=output.f90 myprog.f90
+SRC= grid.f90 init.f90 main.f90
 OBJ=${SRC:.f90=.o}
 %.o: %.f90
 	$(FC) $(FFLAGS) -o $@ -c $<
