@@ -4,7 +4,8 @@ program hydro2
   real :: v,t,dx,dt
   integer,parameter :: NX = 100
 
-  real, dimension(1:NX) :: x
+  real, allocatable, dimension(:) :: x_array,u_array
+
 
 
 end program hydro2

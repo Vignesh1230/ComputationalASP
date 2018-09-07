@@ -2,7 +2,7 @@ module init
   implicit none
 contains
 
-  subroutine set_initial(xGrid,size)
+  subroutine set_initial(xGrid,uGrid,size)
     real, intent(in):: xGrid,size
     real, intent(out):: xGrid
     do i = 1,size,1
@@ -13,8 +13,6 @@ contains
       end if
     end do
   end subroutine
-
-
 
 
 end module init
