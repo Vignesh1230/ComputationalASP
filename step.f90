@@ -2,7 +2,7 @@ module grid
   implicit none
 contains
 
-  subroutine set_grid()
+  subroutine step_function()
 
   end subroutine
 
