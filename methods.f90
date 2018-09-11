@@ -1,7 +1,7 @@
 module methods
   implicit none
 
-  public :: Upwind
+  public :: Upwind,LaxP,LaxC
 contains
 
 
@@ -11,6 +11,18 @@ contains
     Upwind = current - V * (tStep/xStep) * (current - prev)
 
   end function Upwind
+
+
+  real function LaxP()
+
+
+  end function LaxP()
+
+
+  real function LaxC()
+
+  end function LaxC()
+
 
 
 
