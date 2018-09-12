@@ -18,9 +18,9 @@ program hydro2
   dx = 1./NX
   dt = 0.5 * (dx / v)
   xSize = NX
-  C = V * dt/dx
+  C = 0.999
 
-  methodBool = .TRUE. !False Upwind, True Lax Wendroff
+  methodBool = .FALSE. !False Upwind, True Lax Wendroff
 
 
 
@@ -31,7 +31,8 @@ program hydro2
 
 
   call set_grid(x_array,u_array,int(xSize))
-  call set_initialSine(x_array,u_array,xSize,dx)
+  call set_initialSquare(x_array,u_array,xSize,dx)
+  !call set_initialSine(x_array,u_array,xSize,dx)
 
   call write_output(0,NX,x_array,u_array,0.)
 

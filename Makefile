@@ -10,3 +10,4 @@ main: $(OBJ)
 clean:
 	rm *.o *.mod
 	rm results/*
+	rm plots/*

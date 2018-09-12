@@ -17,6 +17,7 @@ contains
 
       do i=1,nx
         write(iunit,*) x(i),u(i)
+
       enddo
       close(iunit)
 
