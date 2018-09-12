@@ -13,14 +13,19 @@ contains
   end function Upwind
 
 
-  real function LaxP()
+  real function LaxP(current,next)
+    real, intent(in) :: current,next
 
+    LaxP = 0.5 * (current + next) - C/2 * (next -  current)
 
   end function LaxP()
 
 
-  real function LaxC()
+  real function LaxC(current,next,currentMod,nextMod)
+    real, intent(in) :: current,next,currentMod,nextMod
 
+    LaxC = current - C * (LaxP(current,next) - LaxP (currentMod,nextMod))
+    
   end function LaxC()
 
 
