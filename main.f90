@@ -5,16 +5,24 @@ program hydro2
   use output
   implicit none
 
-  real :: V,t,dx,dt,xSize
-  integer,parameter :: NX = 100, tmax = 1.
-  integer :: istep
+  real                            :: V,t,dx,dt,xSize,C
+  integer,parameter               :: NX = 100, tmax = 1.
+  integer                         :: istep
   real, allocatable, dimension(:) :: x_array,u_array
 
+  Logical                         :: methodBool
 
+
+  !Question Setup
   v = 1.
   dx = 1./NX
   dt = 0.5 * (dx / v)
   xSize = NX
+  C = V * dt/dx
+
+  methodBool = .TRUE. !False Upwind, True Lax Wendroff
+
+
 
   !Variables for Time loop
   t = 0.
@@ -32,7 +40,12 @@ program hydro2
     t = t + dt
     istep = istep + 1
 
-    call stepfunctionUpWind(u_array,dx,dt,V)
+    if (methodBool .eqv.  .FALSE.) THEN
+      call stepUpWind(u_array,dx,dt,V)
+    else
+      call stepLax(u_array,C)
+    end if
+
     call write_output(istep,NX,x_array,u_array,t)
 
 

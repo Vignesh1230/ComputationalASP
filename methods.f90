@@ -5,6 +5,7 @@ module methods
 contains
 
 
+
   real function Upwind(prev,current,xStep,tStep,V)
     real, intent(in):: prev,current,xStep,tStep,V
 
@@ -13,20 +14,20 @@ contains
   end function Upwind
 
 
-  real function LaxP(current,next)
-    real, intent(in) :: current,next
+  real function LaxP(current,next,C)
+    real, intent(in) :: current,next,C
 
     LaxP = 0.5 * (current + next) - C/2 * (next -  current)
 
-  end function LaxP()
+  end function LaxP
 
 
-  real function LaxC(current,next,currentMod,nextMod)
-    real, intent(in) :: current,next,currentMod,nextMod
+  real function LaxC(prev,current,next,C)
+    real, intent(in) :: prev,current,next,C
 
-    LaxC = current - C * (LaxP(current,next) - LaxP (currentMod,nextMod))
-    
-  end function LaxC()
+    LaxC = current - C * (LaxP(current,next,C) - LaxP (prev,current,C))
+
+  end function LaxC
 
 
 
