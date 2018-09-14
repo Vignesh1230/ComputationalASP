@@ -19,7 +19,7 @@ contains
       u_array(j) = Upwind(u_array(j-1),u_array(j),dx,dt,V)
     end do
 
-  end subroutine stepUpWind
+  end subroutine stepGodunov
   !
   !
   ! subroutine stepLax(u_array,C)
