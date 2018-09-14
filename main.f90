@@ -5,12 +5,13 @@ program hydro2
   use output
   implicit none
 
-  real                            :: V,t,dx,dt,xSize,C
-  integer,parameter               :: NX = 100, tmax = 1.
-  integer                         :: istep
-  real, allocatable, dimension(:) :: x_array,u_array
+  real                              :: V,t,dx,dt,xSize,C
+  integer,parameter                 :: NX = 100, tmax = 1.
+  integer                           :: istep
+  real, allocatable, dimension(:)   :: x_array
+  real, allocatable, dimension(:,:) :: u_array
 
-  Logical                         :: methodBool
+  Logical                           :: methodBool
 
 
   !Question Setup
@@ -30,27 +31,27 @@ program hydro2
 
 
 
-  call set_grid(x_array,u_array,int(xSize))
-  call set_initialSquare(x_array,u_array,xSize,dx)
-  !call set_initialSine(x_array,u_array,xSize,dx)
-
-  call write_output(0,NX,x_array,u_array,0.)
-
-  istep = 0.
-  do while ( t < tmax)
-    t = t + dt
-    istep = istep + 1
-
-    if (methodBool .eqv.  .FALSE.) THEN
-      call stepUpWind(u_array,dx,dt,V)
-    else
-      call stepLax(u_array,C)
-    end if
-
-    call write_output(istep,NX,x_array,u_array,t)
-
-
-  end do
+  ! call set_grid(x_array,u_array,int(xSize))
+  ! call set_initialSquare(x_array,u_array,xSize,dx)
+  ! !call set_initialSine(x_array,u_array,xSize,dx)
+  !
+  ! call write_output(0,NX,x_array,u_array,0.)
+  !
+  ! istep = 0.
+  ! do while ( t < tmax)
+  !   t = t + dt
+  !   istep = istep + 1
+  !
+  !   if (methodBool .eqv.  .FALSE.) THEN
+  !     call stepUpWind(u_array,dx,dt,V)
+  !   else
+  !     call stepLax(u_array,C)
+  !   end if
+  !
+  !   call write_output(istep,NX,x_array,u_array,t)
+  !
+  !
+  ! end do
 
 
 end program hydro2

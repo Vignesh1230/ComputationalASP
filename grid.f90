@@ -3,10 +3,13 @@ module grid
 contains
 
   subroutine set_grid(xGrid,uGrid,size)
-    real,allocatable,intent(inout),dimension(:)::xGrid,uGrid
-    integer,intent(in) :: size
-    allocate(xGrid(1:size))
-    allocate(uGrid(1:size))
+    integer, parameter                            ::  nu = 1
+    real,allocatable,intent(inout),dimension(:)   ::  xGrid
+    real,allocatable,intent(inout),dimension(:,:) ::  uGrid
+    integer,intent(in)                            ::  size
+
+    allocate(xGrid(size))
+    allocate(uGrid(nu,size))
 
   end subroutine
 
